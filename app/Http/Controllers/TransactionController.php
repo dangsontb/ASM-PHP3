@@ -11,7 +11,7 @@ class TransactionController extends Controller
 {
     public function index()
     {
-        return view('transaction');
+        return view('transactions.transaction');
     }
 
 
@@ -48,7 +48,7 @@ class TransactionController extends Controller
         if(session()->has('transaction')){
             $transaction = session()->get('transaction');
 
-            return view('review', compact('transaction'));
+            return view('transactions.review', compact('transaction'));
         }
       
     }
@@ -90,6 +90,6 @@ class TransactionController extends Controller
     }
 
     public function successTransaction(){
-        return view('success');
+        return view('transactions.success');
     }
 }
