@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('transactions', [TransactionController::class, 'index'])->name('index');
+Route::post('transactions', [TransactionController::class, 'startTransaction'])->name('start');
+
+Route::get('/transactions/review', [TransactionController::class, 'reviewTransaction'])->name('review');
+Route::post('/transactions/complete', [TransactionController::class, 'completeTransaction'])->name('complete');
+Route::post('/transactions/cancel', [TransactionController::class, 'cancelTransaction'])->name('cancel');
+
+Route::get('/transactions/success', [TransactionController::class, 'successTransaction'])->name('success');
